@@ -56,6 +56,9 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 uint32_t Wheel(uint8_t WheelPos);
 
+void rainbowGradient(void);
+void strobeGradient(void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -98,8 +101,6 @@ int main(void)
 	wsled.led_init();
 	wsled.led_set_color_all(0x0F, 0x0F, 0x0F);  
 	wsled.led_display();
-
-  uint16_t i, j;
 	
   /* USER CODE END 2 */
 
@@ -111,14 +112,21 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		// 5 cycles of all colors on wheel
-		for(j=0; j<256*5; j++) { 
-			for(i=0; i< LED_CFG_LEDS_CNT; i++) {
-				wsled.led_set_color_rgb(i, Wheel(((i * 255 / LED_CFG_LEDS_CNT) + j) & 255));
-			}
-			wsled.led_display();
-			HAL_Delay(10);
-		}
-	
+
+		//for (j=0; j < 256; j++) {     // cycle all 256 colors in the wheel
+		//	for (q=0; q < 3; q++) {
+		//		for (i=0;i < LED_CFG_LEDS_CNT;i=i+3) {
+		//			wsled.led_set_color_rgb(i+q, Wheel((i+j) % 255));    //turn every third pixel on
+		//		}
+		//		wsled.led_display();
+
+		//		HAL_Delay(50);
+
+		//		for (i=0;i < LED_CFG_LEDS_CNT;i=i+3) {
+		//			wsled.led_set_color_rgb(i+q, 0);        //turn every third pixel off
+		//		}
+		//	}
+		//}
   }
   /* USER CODE END 3 */
 }
@@ -197,6 +205,36 @@ uint32_t Wheel(uint8_t WheelPos)
   }
 }
 
+void rainbowGradient(void) {
+	uint16_t i, j;
+	
+	for(j=0; j<256*5; j++) { 
+		for(i=0; i< LED_CFG_LEDS_CNT; i++) {
+			wsled.led_set_color_rgb(i, Wheel(((i * 255 / LED_CFG_LEDS_CNT) + j) & 255));
+		}
+		wsled.led_display();
+		HAL_Delay(10);
+	}
+}
+
+void strobeGradient(void) {
+	uint16_t i, j, q;
+	
+	for (j=0; j < 256; j++) {     // cycle all 256 colors in the wheel
+		for (q=0; q < 3; q++) {
+			for (i=0;i < LED_CFG_LEDS_CNT;i=i+3) {
+				wsled.led_set_color_rgb(i+q, Wheel((i+j) % 255));    //turn every third pixel on
+			}
+			wsled.led_display();
+
+			HAL_Delay(50);
+
+			for (i=0;i < LED_CFG_LEDS_CNT;i=i+3) {
+				wsled.led_set_color_rgb(i+q, 0);        //turn every third pixel off
+			}
+		}
+	}
+}
 /* USER CODE END 4 */
 
 /**
