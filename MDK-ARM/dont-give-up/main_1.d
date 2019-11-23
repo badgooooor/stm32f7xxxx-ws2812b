@@ -34,5 +34,8 @@ dont-give-up\main_1.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.
 dont-give-up\main_1.o: ../Inc/dma.h
 dont-give-up\main_1.o: ../Inc/tim.h
 dont-give-up\main_1.o: ../Inc/gpio.h
+dont-give-up\main_1.o: D:\Program Files\ARM\ARMCC\Bin\..\include\stdio.h
+dont-give-up\main_1.o: D:\Program Files\ARM\ARMCC\Bin\..\include\stdlib.h
+dont-give-up\main_1.o: D:\Program Files\ARM\ARMCC\Bin\..\include\time.h
 dont-give-up\main_1.o: ..\Src\WS2812B\ws2812b.h
 dont-give-up\main_1.o: D:\Program Files\ARM\ARMCC\Bin\..\include\string.h

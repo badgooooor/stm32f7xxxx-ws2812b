@@ -26,6 +26,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "stdio.h"
+#include "stdlib.h"
+#include "time.h"
 #include "ws2812b.h"
 /* USER CODE END Includes */
 
@@ -48,16 +51,28 @@
 
 /* USER CODE BEGIN PV */
 WSLED wsled;
-
+uint8_t palette_A[6][3] = {
+	{0xac,0x46,0x84},
+	{0x95,0x47,0x84},
+	{0x6d,0x48,0x86},
+	{0x50,0x48,0x87},
+	{0x3a,0x48,0x87},
+	{0x20,0x49,0x88},
+};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 uint32_t Wheel(uint8_t WheelPos);
+uint8_t randomNumber(uint8_t lower, uint8_t upper);
 
 void rainbowGradient(void);
 void strobeGradient(void);
+void wheelAll(void);
+void randomColor(void);
+void loopPalette(uint8_t color[6][3]);
+void loopPalette2(uint8_t color[6][3]);
 
 /* USER CODE END PFP */
 
@@ -111,6 +126,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		randomColor();
 		// 5 cycles of all colors on wheel
 
 		//for (j=0; j < 256; j++) {     // cycle all 256 colors in the wheel
@@ -205,6 +221,10 @@ uint32_t Wheel(uint8_t WheelPos)
   }
 }
 
+uint8_t randomNumber(uint8_t lower, uint8_t upper) {
+	return (rand() % (upper - lower + 1)) + lower;
+}
+
 void rainbowGradient(void) {
 	uint16_t i, j;
 	
@@ -233,6 +253,63 @@ void strobeGradient(void) {
 				wsled.led_set_color_rgb(i+q, 0);        //turn every third pixel off
 			}
 		}
+	}
+}
+
+void wheelAll(void) {
+	uint16_t i;
+	
+	for (i=0; i < 256; i++) {
+		wsled.led_set_color_all_rgb(Wheel(i % 255));
+		wsled.led_display();
+		HAL_Delay(500);
+	}
+}
+
+void randomColor(void) {
+	uint16_t i;
+	uint8_t color_r, color_g, color_b;
+	
+	for (i=0;i < LED_CFG_LEDS_CNT; i++) {
+		color_r = randomNumber(0, 255);
+		color_g = randomNumber(0, 255);
+		color_b = randomNumber(0, 255);
+		
+		wsled.led_set_color(i, color_r, color_g, color_b);
+	}
+	wsled.led_display();
+	HAL_Delay(500);
+}
+
+void loopPalette(uint8_t color[6][3]) {
+	uint16_t i, j;
+	uint8_t palettePos;
+	
+	for (j=0;j < 6; j++) {
+		for (i=0;i < LED_CFG_LEDS_CNT; i++) {
+			if ((i / 6) % 2 == 1) {
+				palettePos = (i+j)%6;
+			} else {
+				palettePos = 5-(i+j)%6;
+			}
+			wsled.led_set_color(i, color[palettePos][0], color[palettePos][1], color[palettePos][2]);
+		}
+		wsled.led_display();
+		HAL_Delay(500);
+	}
+}
+
+void loopPalette2(uint8_t color[6][3]) {
+	uint16_t i, j;
+	uint8_t palettePos;
+	
+	for (j=0;j < 6;j++) {
+		for (i=0;i < LED_CFG_LEDS_CNT;i++) {
+			palettePos = ((i / 6)+j) % 6;
+			wsled.led_set_color(i, color[palettePos][0], color[palettePos][1], color[palettePos][2]);
+		}
+		wsled.led_display();
+		HAL_Delay(500);
 	}
 }
 /* USER CODE END 4 */

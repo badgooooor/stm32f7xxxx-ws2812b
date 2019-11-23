@@ -1,6 +1,6 @@
 Dependencies for Project 'dont-give-up', Target 'dont-give-up': (DO NOT MODIFY !)
 F (startup_stm32f767xx.s)(0x5DD694EE)(--cpu Cortex-M7.fp.dp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_dont-give-up-I"D:\Program Files\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"D:\Program Files\ARM\PACK\Keil\STM32F7xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include"--pd "__UVISION_VERSION SETA 528" --pd "_RTE_ SETA 1" --pd "STM32F767xx SETA 1"--list startup_stm32f767xx.lst --xref -o dont-give-up\startup_stm32f767xx.o --depend dont-give-up\startup_stm32f767xx.d)
-F (..\Src\main.cpp)(0x5DD7A9F7)(--cpp -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\WS2812B-I.\RTE\_dont-give-up-I"D:\Program Files\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"D:\Program Files\ARM\PACK\Keil\STM32F7xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o dont-give-up\main_1.o --omf_browse dont-give-up\main_1.crf --depend dont-give-up\main_1.d)
+F (..\Src\main.cpp)(0x5DD92244)(--cpp -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\WS2812B-I.\RTE\_dont-give-up-I"D:\Program Files\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"D:\Program Files\ARM\PACK\Keil\STM32F7xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o dont-give-up\main_1.o --omf_browse dont-give-up\main_1.crf --depend dont-give-up\main_1.d)
 I (../Inc/main.h)(0x5DD694EB)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h)(0x5D5A6048)
 I (../Inc/stm32f7xx_hal_conf.h)(0x5DD694EB)
@@ -35,6 +35,9 @@ I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_tim_ex.h)(0x5D5A6049)
 I (../Inc/dma.h)(0x5DD694EA)
 I (../Inc/tim.h)(0x5DD694EA)
 I (../Inc/gpio.h)(0x5DD694EA)
+I (D:\Program Files\ARM\ARMCC\include\stdio.h)(0x5CEB87F2)
+I (D:\Program Files\ARM\ARMCC\include\stdlib.h)(0x5CEB87F2)
+I (D:\Program Files\ARM\ARMCC\include\time.h)(0x5CEB87E6)
 I (..\Src\WS2812B\ws2812b.h)(0x5DD64062)
 I (D:\Program Files\ARM\ARMCC\include\string.h)(0x5CEB87F2)
 F (../Src/gpio.c)(0x5DD694E9)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc -I ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I ../Drivers/CMSIS/Include -I ..\Src\WS2812B-I.\RTE\_dont-give-up-I"D:\Program Files\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include"-I"D:\Program Files\ARM\PACK\Keil\STM32F7xx_DFP\2.12.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include"-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o dont-give-up\gpio.o --omf_browse dont-give-up\gpio.crf --depend dont-give-up\gpio.d)
